@@ -6,6 +6,7 @@
     <meta name="description" content="Portfolio αστροφωτογραφίας με λήψεις βαθέως ουρανού, Σελήνης και γαλαξιακού κέντρου.">
     <title>SkyLover | Astrophotography</title>
     <link rel="stylesheet" href="style.css">
+    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
 </head>
 <body>
     <nav class="navbar" aria-label="Κύρια πλοήγηση">
@@ -59,5 +60,16 @@
     <footer><p>© <span id="year"></span> SkyLover · <span data-el="Φωτογραφίζοντας το σύμπαν" data-en="Photographing the universe">Φωτογραφίζοντας το σύμπαν</span></p></footer>
     <div id="lightbox" class="lightbox" role="dialog" aria-modal="true" aria-labelledby="lightbox-title" hidden><button class="close-lightbox" type="button" aria-label="Κλείσιμο">×</button><figure><img class="lightbox-content" id="lightbox-img" alt=""><figcaption id="lightbox-title"></figcaption></figure></div>
     <script src="script.js"></script>
+    <script>
+      if (window.netlifyIdentity) {
+        window.netlifyIdentity.on('init', (user) => {
+          if (!user) {
+            window.netlifyIdentity.on('login', () => {
+              document.location.href = '/admin/';
+            });
+          }
+        });
+      }
+    </script>
 </body>
 </html>
