@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Portfolio αστροφωτογραφίας με λήψεις βαθέως ουρανού, Σελήνης και γαλαξιακού κέντρου.">
+    <title>SkyLover | Astrophotography</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="navbar" aria-label="Κύρια πλοήγηση">
+        <a class="logo" href="#top" aria-label="SkyLover αρχική">Sky<span>Lover</span></a>
+        <ul class="nav-links">
+            <li><a href="#gallery" data-el="Portfolio" data-en="Portfolio">Portfolio</a></li>
+            <li><a href="#about" data-el="Σχετικά" data-en="About">Σχετικά</a></li>
+            <li><a href="#gear" data-el="Εξοπλισμός" data-en="Gear">Εξοπλισμός</a></li>
+            <li><a href="#contact" data-el="Επικοινωνία" data-en="Contact">Επικοινωνία</a></li>
+        </ul>
+        <button id="lang-toggle" class="lang-btn" type="button" aria-label="Switch language">EN</button>
+    </nav>
+
+    <header class="hero" id="top">
+        <div class="hero-content">
+            <p class="eyebrow" data-el="Κοιτάζοντας πιο μακριά" data-en="Looking farther">Κοιτάζοντας πιο μακριά</p>
+            <h1 data-el="Ιστορίες γραμμένες στο φως των άστρων" data-en="Stories written in starlight">Ιστορίες γραμμένες στο φως των άστρων</h1>
+            <p class="hero-text" data-el="Αστροφωτογραφία από τον νυχτερινό ουρανό — από τη Σελήνη έως τα μυστικά του βαθέως σύμπαντος." data-en="Astrophotography from the night sky — from the Moon to the mysteries of deep space.">Αστροφωτογραφία από τον νυχτερινό ουρανό — από τη Σελήνη έως τα μυστικά του βαθέως σύμπαντος.</p>
+            <a class="primary-btn" href="#gallery" data-el="Εξερεύνησε τις λήψεις" data-en="Explore the images">Εξερεύνησε τις λήψεις</a>
+        </div>
+    </header>
+
+    <main>
+        <section class="portfolio-section" id="gallery" aria-labelledby="portfolio-title">
+            <div class="section-heading">
+                <p class="eyebrow" data-el="Επιλεγμένες λήψεις" data-en="Selected images">Επιλεγμένες λήψεις</p>
+                <h2 id="portfolio-title" data-el="Το portfolio μου" data-en="My portfolio">Το portfolio μου</h2>
+                <p data-el="Πάτησε σε μια φωτογραφία για να τη δεις σε πλήρη ανάλυση." data-en="Select an image to view it in full.">Πάτησε σε μια φωτογραφία για να τη δεις σε πλήρη ανάλυση.</p>
+            </div>
+
+            <div class="filters-container" role="group" aria-label="Φίλτρα συλλογής">
+                <button class="filter-btn active" type="button" data-filter="all" data-el="Όλες" data-en="All">Όλες</button>
+                <button class="filter-btn" type="button" data-filter="deepsky" data-el="Βαθύ Σύμπαν" data-en="Deep Sky">Βαθύ Σύμπαν</button>
+                <button class="filter-btn" type="button" data-filter="solar" data-el="Ηλιακό Σύστημα" data-en="Solar System">Ηλιακό Σύστημα</button>
+                <button class="filter-btn" type="button" data-filter="landscape" data-el="Astro-landscape" data-en="Astro-landscape">Astro-landscape</button>
+            </div>
+
+            <div class="gallery">
+                <article class="card" data-category="deepsky">
+                    <button class="image-trigger" type="button" data-image="images/galaxy.jpg" data-title-el="Γαλαξίας — Βαθύ Σύμπαν" data-title-en="Galaxy — Deep Sky" aria-label="Μεγέθυνση φωτογραφίας γαλαξία">
+                        <img src="images/galaxy.jpg" alt="Φωτογραφία ενός γαλαξία στον βαθύ ουρανό" loading="lazy">
+                        <span class="image-hint" data-el="Προβολή πλήρους εικόνας" data-en="View full image">Προβολή πλήρους εικόνας</span>
+                    </button>
+                    <div class="card-info">
+                        <p class="category" data-el="Βαθύ Σύμπαν" data-en="Deep Sky">Βαθύ Σύμπαν</p>
+                        <h3 data-el="Γαλαξίας" data-en="Galaxy">Γαλαξίας</h3>
+                        <p data-el="Μια ματιά πέρα από τον Γαλαξία μας, με λεπτομέρειες που αναδεικνύονται μέσα από τη στοίβαξη εκθέσεων." data-en="A view beyond our Milky Way, with detail revealed through stacked exposures.">Μια ματιά πέρα από τον Γαλαξία μας, με λεπτομέρειες που αναδεικνύονται μέσα από τη στοίβαξη εκθέσεων.</p>
+                        <dl class="shot-details"><div><dt data-el="Στόχος" data-en="Target">Στόχος</dt><dd>Deep Sky Object</dd></div><div><dt data-el="Εξοπλισμός" data-en="Gear">Εξοπλισμός</dt><dd>Sky-Watcher 200PDS</dd></div><div><dt data-el="Επεξεργασία" data-en="Processing">Επεξεργασία</dt><dd>Siril · GIMP</dd></div></dl>
+                    </div>
+                </article>
+
+                <article class="card" data-category="landscape">
+                    <button class="image-trigger" type="button" data-image="images/galaxy_center0.jpg" data-title-el="Γαλαξιακό Κέντρο" data-title-en="Milky Way Center" aria-label="Μεγέθυνση φωτογραφίας γαλαξιακού κέντρου">
+                        <img src="images/galaxy_center0.jpg" alt="Το φωτεινό γαλαξιακό κέντρο στον νυχτερινό ουρανό" loading="lazy">
+                        <span class="image-hint" data-el="Προβολή πλήρους εικόνας" data-en="View full image">Προβολή πλήρους εικόνας</span>
+                    </button>
+                    <div class="card-info">
+                        <p class="category" data-el="Astro-landscape" data-en="Astro-landscape">Astro-landscape</p>
+                        <h3 data-el="Γαλαξιακό Κέντρο" data-en="Milky Way Center">Γαλαξιακό Κέντρο</h3>
+                        <p data-el="Το φωτεινότερο τμήμα του Γαλαξία μας, καταγεγραμμένο κάτω από σκοτεινό ουρανό." data-en="The brightest part of our Milky Way, captured beneath a dark sky.">Το φωτεινότερο τμήμα του Γαλαξία μας, καταγεγραμμένο κάτω από σκοτεινό ουρανό.</p>
+                        <dl class="shot-details"><div><dt data-el="Στόχος" data-en="Target">Στόχος</dt><dd>Milky Way Core</dd></div><div><dt data-el="Τοποθεσία" data-en="Location">Τοποθεσία</dt><dd>Dark Sky Site</dd></div><div><dt data-el="Επεξεργασία" data-en="Processing">Επεξεργασία</dt><dd>Sequator · GIMP</dd></div></dl>
+                    </div>
+                </article>
+
+                <article class="card" data-category="solar">
+                    <button class="image-trigger" type="button" data-image="images/moon1.jpg" data-title-el="Η Σελήνη" data-title-en="The Moon" aria-label="Μεγέθυνση φωτογραφίας της Σελήνης">
+                        <img src="images/moon1.jpg" alt="Λεπτομερής φωτογραφία της Σελήνης" loading="lazy">
+                        <span class="image-hint" data-el="Προβολή πλήρους εικόνας" data-en="View full image">Προβολή πλήρους εικόνας</span>
+                    </button>
+                    <div class="card-info">
+                        <p class="category" data-el="Ηλιακό Σύστημα" data-en="Solar System">Ηλιακό Σύστημα</p>
+                        <h3 data-el="Η Σελήνη" data-en="The Moon">Η Σελήνη</h3>
+                        <p data-el="Κρατήρες, σκιές και υφές στον κοντινότερο ουράνιο γείτονά μας." data-en="Craters, shadows, and texture on our nearest celestial neighbour.">Κρατήρες, σκιές και υφές στον κοντινότερο ουράνιο γείτονά μας.</p>
+                        <dl class="shot-details"><div><dt data-el="Στόχος" data-en="Target">Στόχος</dt><dd>Earth's Moon</dd></div><div><dt data-el="Κάμερα" data-en="Camera">Κάμερα</dt><dd>Xiaomi 11 Lite</dd></div><div><dt data-el="Τεχνική" data-en="Technique">Τεχνική</dt><dd>Single frame</dd></div></dl>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <section class="about-section" id="about">
+            <div><p class="eyebrow" data-el="Πίσω από τον φακό" data-en="Behind the lens">Πίσω από τον φακό</p><h2 data-el="Γιατί αστροφωτογραφία;" data-en="Why astrophotography?">Γιατί αστροφωτογραφία;</h2></div>
+            <p data-el="Κάθε λήψη είναι μια μικρή εξερεύνηση: σχεδιασμός, υπομονή κάτω από σκοτεινό ουρανό και προσεκτική επεξεργασία. Το SkyLover είναι το ημερολόγιο αυτών των νυχτερινών διαδρομών." data-en="Every image is a small expedition: planning, patience under a dark sky, and careful processing. SkyLover is the journal of these nocturnal journeys.">Κάθε λήψη είναι μια μικρή εξερεύνηση: σχεδιασμός, υπομονή κάτω από σκοτεινό ουρανό και προσεκτική επεξεργασία. Το SkyLover είναι το ημερολόγιο αυτών των νυχτερινών διαδρομών.</p>
+        </section>
+
+        <section class="gear-section" id="gear"><div class="section-heading"><p class="eyebrow" data-el="Το setup μου" data-en="My setup">Το setup μου</p><h2 data-el="Εξοπλισμός" data-en="Astro gear">Εξοπλισμός</h2></div><div class="gear-grid"><article class="gear-item"><span>🔭</span><h3 data-el="Τηλεσκόπιο" data-en="Telescope">Τηλεσκόπιο</h3><p>Sky-Watcher 200PDS<br>1000mm f/5</p></article><article class="gear-item"><span>📷</span><h3 data-el="Κάμερα" data-en="Camera">Κάμερα</h3><p>Xiaomi 11 Lite</p></article><article class="gear-item"><span>🌌</span><h3 data-el="Βάση" data-en="Mount">Βάση</h3><p>Sky-Watcher EQ5</p></article><article class="gear-item"><span>⚙️</span><h3 data-el="Λογισμικό" data-en="Software">Λογισμικό</h3><p>Siril · Sequator · GIMP</p></article></div></section>
+
+        <section class="contact-section" id="contact"><p class="eyebrow" data-el="Ας μιλήσουμε" data-en="Let's talk">Ας μιλήσουμε</p><h2 data-el="Επικοινωνία" data-en="Contact">Επικοινωνία</h2><p data-el="Έχεις ερώτηση για κάποια λήψη ή θέλεις να μιλήσουμε για αστροφωτογραφία;" data-en="Have a question about an image or want to talk astrophotography?">Έχεις ερώτηση για κάποια λήψη ή θέλεις να μιλήσουμε για αστροφωτογραφία;</p><div class="social-links"><a href="https://www.astrobin.com" target="_blank" rel="noopener noreferrer" class="social-btn">🌌 AstroBin</a><a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer" class="social-btn">📸 Instagram</a></div><form class="contact-form" action="https://formspree.io/f/meeydolz" method="POST"><label><span data-el="Όνομα" data-en="Name">Όνομα</span><input type="text" name="name" autocomplete="name" required></label><label>Email<input type="email" name="email" autocomplete="email" required></label><label><span data-el="Μήνυμα" data-en="Message">Μήνυμα</span><textarea name="message" rows="5" required></textarea></label><button type="submit" class="submit-btn" data-el="Αποστολή μηνύματος" data-en="Send message">Αποστολή μηνύματος</button></form></section>
+    </main>
+
+    <footer><p>© <span id="year"></span> SkyLover · <span data-el="Φωτογραφίζοντας το σύμπαν" data-en="Photographing the universe">Φωτογραφίζοντας το σύμπαν</span></p></footer>
+    <div id="lightbox" class="lightbox" role="dialog" aria-modal="true" aria-labelledby="lightbox-title" hidden><button class="close-lightbox" type="button" aria-label="Κλείσιμο">×</button><figure><img class="lightbox-content" id="lightbox-img" alt=""><figcaption id="lightbox-title"></figcaption></figure></div>
+    <script src="script.js"></script>
+</body>
+</html>
