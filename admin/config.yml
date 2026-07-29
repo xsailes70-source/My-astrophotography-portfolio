@@ -1,0 +1,36 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "images"
+public_folder: "/images"
+
+collections:
+  - name: "portfolio"
+    label: "Φωτογραφίες Portfolio"
+    files:
+      - name: "photos"
+        label: "Οι φωτογραφίες μου"
+        file: "content/photos.json"
+        fields:
+          - name: "photos"
+            label: "Φωτογραφίες"
+            widget: "list"
+            summary: "{{fields.title_el}}"
+            fields:
+              - { name: "image", label: "Φωτογραφία", widget: "image" }
+              - name: "category"
+                label: "Κατηγορία"
+                widget: "select"
+                options:
+                  - { label: "Βαθύ Σύμπαν", value: "deepsky" }
+                  - { label: "Ηλιακό Σύστημα", value: "solar" }
+                  - { label: "Astro-landscape", value: "landscape" }
+              - { name: "title_el", label: "Τίτλος στα ελληνικά", widget: "string" }
+              - { name: "title_en", label: "Τίτλος στα αγγλικά (προαιρετικό)", widget: "string", required: false }
+              - { name: "description_el", label: "Περιγραφή στα ελληνικά", widget: "text", required: false }
+              - { name: "description_en", label: "Περιγραφή στα αγγλικά (προαιρετικό)", widget: "text", required: false }
+              - { name: "target", label: "Στόχος / αντικείμενο", widget: "string", required: false }
+              - { name: "location", label: "Τοποθεσία", widget: "string", required: false }
+              - { name: "gear", label: "Εξοπλισμός", widget: "string", required: false }
+              - { name: "processing", label: "Επεξεργασία", widget: "string", required: false }

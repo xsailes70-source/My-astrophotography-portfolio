@@ -43,46 +43,7 @@
                 <button class="filter-btn" type="button" data-filter="landscape" data-el="Astro-landscape" data-en="Astro-landscape">Astro-landscape</button>
             </div>
 
-            <div class="gallery">
-                <article class="card" data-category="deepsky">
-                    <button class="image-trigger" type="button" data-image="images/galaxy.jpg" data-title-el="Γαλαξίας — Βαθύ Σύμπαν" data-title-en="Galaxy — Deep Sky" aria-label="Μεγέθυνση φωτογραφίας γαλαξία">
-                        <img src="images/galaxy.jpg" alt="Φωτογραφία ενός γαλαξία στον βαθύ ουρανό" loading="lazy">
-                        <span class="image-hint" data-el="Προβολή πλήρους εικόνας" data-en="View full image">Προβολή πλήρους εικόνας</span>
-                    </button>
-                    <div class="card-info">
-                        <p class="category" data-el="Βαθύ Σύμπαν" data-en="Deep Sky">Βαθύ Σύμπαν</p>
-                        <h3 data-el="Γαλαξίας" data-en="Galaxy">Γαλαξίας</h3>
-                        <p data-el="Μια ματιά πέρα από τον Γαλαξία μας, με λεπτομέρειες που αναδεικνύονται μέσα από τη στοίβαξη εκθέσεων." data-en="A view beyond our Milky Way, with detail revealed through stacked exposures.">Μια ματιά πέρα από τον Γαλαξία μας, με λεπτομέρειες που αναδεικνύονται μέσα από τη στοίβαξη εκθέσεων.</p>
-                        <dl class="shot-details"><div><dt data-el="Στόχος" data-en="Target">Στόχος</dt><dd>Deep Sky Object</dd></div><div><dt data-el="Εξοπλισμός" data-en="Gear">Εξοπλισμός</dt><dd>Sky-Watcher 200PDS</dd></div><div><dt data-el="Επεξεργασία" data-en="Processing">Επεξεργασία</dt><dd>Siril · GIMP</dd></div></dl>
-                    </div>
-                </article>
-
-                <article class="card" data-category="landscape">
-                    <button class="image-trigger" type="button" data-image="images/galaxy_center0.jpg" data-title-el="Γαλαξιακό Κέντρο" data-title-en="Milky Way Center" aria-label="Μεγέθυνση φωτογραφίας γαλαξιακού κέντρου">
-                        <img src="images/galaxy_center0.jpg" alt="Το φωτεινό γαλαξιακό κέντρο στον νυχτερινό ουρανό" loading="lazy">
-                        <span class="image-hint" data-el="Προβολή πλήρους εικόνας" data-en="View full image">Προβολή πλήρους εικόνας</span>
-                    </button>
-                    <div class="card-info">
-                        <p class="category" data-el="Astro-landscape" data-en="Astro-landscape">Astro-landscape</p>
-                        <h3 data-el="Γαλαξιακό Κέντρο" data-en="Milky Way Center">Γαλαξιακό Κέντρο</h3>
-                        <p data-el="Το φωτεινότερο τμήμα του Γαλαξία μας, καταγεγραμμένο κάτω από σκοτεινό ουρανό." data-en="The brightest part of our Milky Way, captured beneath a dark sky.">Το φωτεινότερο τμήμα του Γαλαξία μας, καταγεγραμμένο κάτω από σκοτεινό ουρανό.</p>
-                        <dl class="shot-details"><div><dt data-el="Στόχος" data-en="Target">Στόχος</dt><dd>Milky Way Core</dd></div><div><dt data-el="Τοποθεσία" data-en="Location">Τοποθεσία</dt><dd>Dark Sky Site</dd></div><div><dt data-el="Επεξεργασία" data-en="Processing">Επεξεργασία</dt><dd>Sequator · GIMP</dd></div></dl>
-                    </div>
-                </article>
-
-                <article class="card" data-category="solar">
-                    <button class="image-trigger" type="button" data-image="images/moon1.jpg" data-title-el="Η Σελήνη" data-title-en="The Moon" aria-label="Μεγέθυνση φωτογραφίας της Σελήνης">
-                        <img src="images/moon1.jpg" alt="Λεπτομερής φωτογραφία της Σελήνης" loading="lazy">
-                        <span class="image-hint" data-el="Προβολή πλήρους εικόνας" data-en="View full image">Προβολή πλήρους εικόνας</span>
-                    </button>
-                    <div class="card-info">
-                        <p class="category" data-el="Ηλιακό Σύστημα" data-en="Solar System">Ηλιακό Σύστημα</p>
-                        <h3 data-el="Η Σελήνη" data-en="The Moon">Η Σελήνη</h3>
-                        <p data-el="Κρατήρες, σκιές και υφές στον κοντινότερο ουράνιο γείτονά μας." data-en="Craters, shadows, and texture on our nearest celestial neighbour.">Κρατήρες, σκιές και υφές στον κοντινότερο ουράνιο γείτονά μας.</p>
-                        <dl class="shot-details"><div><dt data-el="Στόχος" data-en="Target">Στόχος</dt><dd>Earth's Moon</dd></div><div><dt data-el="Κάμερα" data-en="Camera">Κάμερα</dt><dd>Xiaomi 11 Lite</dd></div><div><dt data-el="Τεχνική" data-en="Technique">Τεχνική</dt><dd>Single frame</dd></div></dl>
-                    </div>
-                </article>
-            </div>
+            <div class="gallery" id="photo-gallery" aria-live="polite"></div>
         </section>
 
         <section class="about-section" id="about">

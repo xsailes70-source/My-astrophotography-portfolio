@@ -1,0 +1,40 @@
+{
+  "photos": [
+    {
+      "image": "/images/galaxy.jpg",
+      "category": "deepsky",
+      "title_el": "Γαλαξίας",
+      "title_en": "Galaxy",
+      "description_el": "Μια ματιά πέρα από τον Γαλαξία μας, με λεπτομέρειες που αναδεικνύονται μέσα από τη στοίβαξη εκθέσεων.",
+      "description_en": "A view beyond our Milky Way, with detail revealed through stacked exposures.",
+      "target": "Deep Sky Object",
+      "location": "Dark Sky Site",
+      "gear": "Sky-Watcher 200PDS",
+      "processing": "Siril · GIMP"
+    },
+    {
+      "image": "/images/galaxy_center0.jpg",
+      "category": "landscape",
+      "title_el": "Γαλαξιακό Κέντρο",
+      "title_en": "Milky Way Center",
+      "description_el": "Το φωτεινότερο τμήμα του Γαλαξία μας, καταγεγραμμένο κάτω από σκοτεινό ουρανό.",
+      "description_en": "The brightest part of our Milky Way, captured beneath a dark sky.",
+      "target": "Milky Way Core",
+      "location": "Dark Sky Site",
+      "gear": "Xiaomi 11 Lite",
+      "processing": "Sequator · GIMP"
+    },
+    {
+      "image": "/images/moon1.jpg",
+      "category": "solar",
+      "title_el": "Η Σελήνη",
+      "title_en": "The Moon",
+      "description_el": "Κρατήρες, σκιές και υφές στον κοντινότερο ουράνιο γείτονά μας.",
+      "description_en": "Craters, shadows, and texture on our nearest celestial neighbour.",
+      "target": "Earth's Moon",
+      "location": "Observatory / Home",
+      "gear": "Xiaomi 11 Lite",
+      "processing": "Single frame"
+    }
+  ]
+}
