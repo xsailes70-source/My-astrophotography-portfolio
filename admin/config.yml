@@ -18,6 +18,7 @@ collections:
             widget: "list"
             summary: "{{fields.title_el}}"
             fields:
+              - { name: "rating_id", label: "Κωδικός βαθμολογίας", widget: "string", hint: "Μοναδικός κωδικός με λατινικά και παύλες, π.χ. orion-nebula-2026" }
               - { name: "image", label: "Φωτογραφία", widget: "image", hint: "Ανέβασε το αντίγραφο JPG ή PNG στο αρχικό του μέγεθος. Η σελίδα το μετατρέπει αυτόματα σε ελαφριά WebP για τους επισκέπτες." }
               - name: "category"
                 label: "Κατηγορία"

@@ -6,9 +6,14 @@ const lightboxTitle = document.getElementById('lightbox-title');
 const lightboxMetadata = document.getElementById('lightbox-metadata');
 const closeLightbox = document.querySelector('.close-lightbox');
 const langToggleBtn = document.getElementById('lang-toggle');
+const supabaseUrl = 'https://docwljemzdmvtxqyurks.supabase.co';
+const supabaseKey = 'sb_publishable_diIew3INCNF3hc9Cqudo6Q_2N0uSIgp';
 let currentLang = 'el';
 let activeFilter = 'all';
 let lastTrigger;
+let photos = [];
+const ratingData = new Map();
+const ratedPhotoIds = new Set(JSON.parse(localStorage.getItem('skylover-rated-photos') || '[]'));
 
 const categoryNames = {
   deepsky: { el: 'Βαθύ Σύμπαν', en: 'Deep Sky' },
@@ -47,6 +52,22 @@ function exifItem(label, value) {
   return value ? `<div><dt>${label}</dt><dd>${escapeHtml(value)}</dd></div>` : '';
 }
 
+function ratingId(photo) {
+  return photo.rating_id || photo.image;
+}
+
+function ratingMarkup(photo) {
+  const id = ratingId(photo);
+  const data = ratingData.get(id);
+  const average = data ? Number(data.average_rating) : 0;
+  const count = data ? Number(data.vote_count) : 0;
+  const summary = count
+    ? `${average.toFixed(1)} / 5 · ${count} ${currentLang === 'el' ? (count === 1 ? 'ψήφος' : 'ψήφοι') : (count === 1 ? 'vote' : 'votes')}`
+    : (currentLang === 'el' ? 'Δεν υπάρχουν ψήφοι ακόμη' : 'No votes yet');
+  const label = currentLang === 'el' ? 'Βαθμολόγησε αυτή τη φωτογραφία' : 'Rate this photo';
+  return `<div class="rating" data-rating-id="${escapeHtml(id)}"><div class="rating-stars" role="group" aria-label="${label}">${[1, 2, 3, 4, 5].map((value) => `<button class="rating-star ${value <= Math.round(average) ? 'is-filled' : ''}" type="button" data-value="${value}" aria-label="${value} ${currentLang === 'el' ? 'αστέρια' : 'stars'}">★</button>`).join('')}</div><span class="rating-summary">${summary}</span></div>`;
+}
+
 async function showExif(image) {
   lightboxMetadata.hidden = true;
   lightboxMetadata.innerHTML = '';
@@ -73,7 +94,7 @@ async function showExif(image) {
   }
 }
 
-function renderPhotos(photos) {
+function renderPhotos() {
   const visiblePhotos = photos.filter((photo) => activeFilter === 'all' || photo.category === activeFilter);
   gallery.innerHTML = visiblePhotos.map((photo) => {
     const title = valueFor(photo, 'title');
@@ -88,7 +109,7 @@ function renderPhotos(photos) {
         <span class="image-hint" data-el="Προβολή πλήρους εικόνας" data-en="View full image">${currentLang === 'el' ? 'Προβολή πλήρους εικόνας' : 'View full image'}</span>
       </button>
       <div class="card-info"><p class="category">${currentLang === 'el' ? category.el : category.en}</p><h3>${escapeHtml(title)}</h3><p>${escapeHtml(description)}</p>
-        <dl class="shot-details">${detail('Στόχος', 'Target', photo.target)}${detail('Τοποθεσία', 'Location', photo.location)}${detail('Εξοπλισμός', 'Gear', photo.gear)}${detail('Ημερομηνία', 'Date', photo.capture_date)}${detail('Έκθεση', 'Exposure', photo.exposure)}${detail('ISO', 'ISO', photo.iso)}${detail('Frames', 'Frames', photo.frames)}${detail('Επεξεργασία', 'Processing', photo.processing)}</dl>
+        ${ratingMarkup(photo)}<dl class="shot-details">${detail('Στόχος', 'Target', photo.target)}${detail('Τοποθεσία', 'Location', photo.location)}${detail('Εξοπλισμός', 'Gear', photo.gear)}${detail('Ημερομηνία', 'Date', photo.capture_date)}${detail('Έκθεση', 'Exposure', photo.exposure)}${detail('ISO', 'ISO', photo.iso)}${detail('Frames', 'Frames', photo.frames)}${detail('Επεξεργασία', 'Processing', photo.processing)}</dl>
       </div></article>`;
   }).join('');
 }
@@ -98,10 +119,40 @@ async function loadPhotos() {
     const response = await fetch('content/photos.json');
     if (!response.ok) throw new Error('Could not load photo data');
     const data = await response.json();
-    renderPhotos(data.photos || []);
+    photos = data.photos || [];
+    renderPhotos();
   } catch (error) {
     gallery.innerHTML = '<p class="form-note">Δεν ήταν δυνατή η φόρτωση των φωτογραφιών.</p>';
   }
+}
+
+async function loadRatings() {
+  try {
+    const response = await fetch(`${supabaseUrl}/rest/v1/rpc/get_photo_ratings`, { method: 'POST', headers: { apikey: supabaseKey, Authorization: `Bearer ${supabaseKey}`, 'Content-Type': 'application/json' }, body: '{}' });
+    if (!response.ok) throw new Error('Could not load ratings');
+    (await response.json()).forEach((row) => ratingData.set(row.photo_id, row));
+    renderPhotos();
+  } catch (_) {
+    // Ratings are optional: the portfolio continues to work if the service is unavailable.
+  }
+}
+
+async function submitRating(id, rating, container) {
+  const message = (text) => { let item = container.querySelector('.rating-message'); if (!item) { item = document.createElement('span'); item.className = 'rating-message'; container.append(item); } item.textContent = text; };
+  if (ratedPhotoIds.has(id)) { message(currentLang === 'el' ? 'Έχεις ήδη βαθμολογήσει αυτή τη φωτογραφία.' : 'You have already rated this photo.'); return; }
+  const key = 'skylover-visitor-id';
+  let visitorId = localStorage.getItem(key);
+  if (!visitorId) { visitorId = crypto.randomUUID(); localStorage.setItem(key, visitorId); }
+  try {
+    const response = await fetch(`${supabaseUrl}/rest/v1/photo_ratings`, { method: 'POST', headers: { apikey: supabaseKey, Authorization: `Bearer ${supabaseKey}`, 'Content-Type': 'application/json', Prefer: 'return=minimal' }, body: JSON.stringify({ photo_id: id, visitor_id: visitorId, rating }) });
+    if (!response.ok) throw new Error('Could not submit rating');
+    ratedPhotoIds.add(id);
+    localStorage.setItem('skylover-rated-photos', JSON.stringify([...ratedPhotoIds]));
+    const data = ratingData.get(id) || { average_rating: 0, vote_count: 0 };
+    const count = Number(data.vote_count) + 1;
+    ratingData.set(id, { photo_id: id, vote_count: count, average_rating: ((Number(data.average_rating) * (count - 1) + rating) / count) });
+    renderPhotos();
+  } catch (_) { message(currentLang === 'el' ? 'Η ψήφος δεν καταχωρήθηκε. Δοκίμασε ξανά.' : 'Your rating was not saved. Please try again.'); }
 }
 
 filterButtons.forEach((button) => {
@@ -120,6 +171,8 @@ function closeModal() {
 }
 
 gallery.addEventListener('click', (event) => {
+  const star = event.target.closest('.rating-star');
+  if (star) { submitRating(star.closest('.rating').dataset.ratingId, Number(star.dataset.value), star.closest('.rating')); return; }
   const trigger = event.target.closest('.image-trigger');
   if (!trigger) return;
   lastTrigger = trigger;
@@ -144,3 +197,4 @@ langToggleBtn.addEventListener('click', () => {
 
 document.getElementById('year').textContent = new Date().getFullYear();
 loadPhotos();
+loadRatings();

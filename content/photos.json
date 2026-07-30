@@ -1,6 +1,7 @@
 {
   "photos": [
     {
+      "rating_id": "galaxy-deep-sky",
       "image": "/images/galaxy.jpg",
       "category": "deepsky",
       "title_el": "Γαλαξίας",
@@ -17,6 +18,7 @@
       "frames": ""
     },
     {
+      "rating_id": "milky-way-center",
       "image": "/images/galaxy_center0.jpg",
       "category": "landscape",
       "title_el": "Γαλαξιακό Κέντρο",
@@ -33,6 +35,7 @@
       "frames": ""
     },
     {
+      "rating_id": "moon-close-up",
       "image": "/images/moon1.jpg",
       "category": "solar",
       "title_el": "Η Σελήνη",
