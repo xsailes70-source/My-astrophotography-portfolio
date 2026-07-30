@@ -20,6 +20,7 @@
     <meta name="twitter:description" content="Αστροφωτογραφία από τον νυχτερινό ουρανό.">
     <meta name="twitter:image" content="https://skylover-astrophotography.netlify.app/images/social-preview.jpg">
     <link rel="stylesheet" href="style.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/exifr@7.1.3/dist/full.umd.js"></script>
     <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
 </head>
 <body>
@@ -72,7 +73,7 @@
     </main>
 
     <footer><p>© <span id="year"></span> SkyLover · <span data-el="Φωτογραφίζοντας το σύμπαν" data-en="Photographing the universe">Φωτογραφίζοντας το σύμπαν</span></p></footer>
-    <div id="lightbox" class="lightbox" role="dialog" aria-modal="true" aria-labelledby="lightbox-title" hidden><button class="close-lightbox" type="button" aria-label="Κλείσιμο">×</button><figure><img class="lightbox-content" id="lightbox-img" alt=""><figcaption id="lightbox-title"></figcaption></figure></div>
+    <div id="lightbox" class="lightbox" role="dialog" aria-modal="true" aria-labelledby="lightbox-title" hidden><button class="close-lightbox" type="button" aria-label="Κλείσιμο">×</button><figure><img class="lightbox-content" id="lightbox-img" alt=""><figcaption id="lightbox-title"></figcaption><dl id="lightbox-metadata" class="lightbox-metadata" hidden></dl></figure></div>
     <!-- Cloudflare Web Analytics -->
     <script type="module" src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token":"e715679bf95e434e8cdbb3a84617d803"}'></script>
     <script src="script.js"></script>

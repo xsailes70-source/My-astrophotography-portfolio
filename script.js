@@ -3,6 +3,7 @@ const filterButtons = document.querySelectorAll('.filter-btn');
 const lightbox = document.getElementById('lightbox');
 const lightboxImg = document.getElementById('lightbox-img');
 const lightboxTitle = document.getElementById('lightbox-title');
+const lightboxMetadata = document.getElementById('lightbox-metadata');
 const closeLightbox = document.querySelector('.close-lightbox');
 const langToggleBtn = document.getElementById('lang-toggle');
 let currentLang = 'el';
@@ -34,6 +35,42 @@ function cdnImage(image, width, height, quality = 82) {
 
 function lightboxImage(image) {
   return `/.netlify/images?url=${encodeURIComponent(image)}&w=1800&fm=webp&q=86`;
+}
+
+function formatExposure(seconds) {
+  if (!seconds) return '';
+  if (seconds >= 1) return `${Number(seconds.toFixed(2))}s`;
+  return `1/${Math.round(1 / seconds)}s`;
+}
+
+function exifItem(label, value) {
+  return value ? `<div><dt>${label}</dt><dd>${escapeHtml(value)}</dd></div>` : '';
+}
+
+async function showExif(image) {
+  lightboxMetadata.hidden = true;
+  lightboxMetadata.innerHTML = '';
+  if (!window.exifr || !/\.(jpe?g|tiff?)$/i.test(image)) return;
+  try {
+    const exif = await window.exifr.parse(image, ['ISO', 'ExposureTime', 'DateTimeOriginal', 'Model', 'LensModel']);
+    if (!exif) return;
+    const date = exif.DateTimeOriginal instanceof Date
+      ? exif.DateTimeOriginal.toLocaleDateString(currentLang === 'el' ? 'el-GR' : 'en-GB')
+      : '';
+    const items = [
+      exifItem(currentLang === 'el' ? 'Ημερομηνία' : 'Date', date),
+      exifItem('ISO', exif.ISO ? `ISO ${exif.ISO}` : ''),
+      exifItem(currentLang === 'el' ? 'Έκθεση' : 'Exposure', formatExposure(exif.ExposureTime)),
+      exifItem(currentLang === 'el' ? 'Κάμερα' : 'Camera', exif.Model),
+      exifItem(currentLang === 'el' ? 'Φακός' : 'Lens', exif.LensModel),
+    ].filter(Boolean).join('');
+    if (items) {
+      lightboxMetadata.innerHTML = items;
+      lightboxMetadata.hidden = false;
+    }
+  } catch (_) {
+    // Metadata is optional and some processed files do not include it.
+  }
 }
 
 function renderPhotos(photos) {
@@ -90,6 +127,7 @@ gallery.addEventListener('click', (event) => {
   lightboxImg.alt = trigger.dataset.title;
   lightboxTitle.textContent = trigger.dataset.title;
   lightbox.hidden = false;
+  showExif(trigger.dataset.image);
   closeLightbox.focus();
 });
 closeLightbox.addEventListener('click', closeModal);

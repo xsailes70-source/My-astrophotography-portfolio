@@ -1,7 +1,7 @@
 {
   "photos": [
     {
-      "image": "/images/galaxy.webp",
+      "image": "/images/galaxy.jpg",
       "category": "deepsky",
       "title_el": "Γαλαξίας",
       "title_en": "Galaxy",
@@ -17,7 +17,7 @@
       "frames": ""
     },
     {
-      "image": "/images/galaxy_center0.webp",
+      "image": "/images/galaxy_center0.jpg",
       "category": "landscape",
       "title_el": "Γαλαξιακό Κέντρο",
       "title_en": "Milky Way Center",
@@ -33,7 +33,7 @@
       "frames": ""
     },
     {
-      "image": "/images/moon1.webp",
+      "image": "/images/moon1.jpg",
       "category": "solar",
       "title_el": "Η Σελήνη",
       "title_en": "The Moon",
