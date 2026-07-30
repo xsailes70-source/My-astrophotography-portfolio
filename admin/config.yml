@@ -33,4 +33,8 @@ collections:
               - { name: "target", label: "Στόχος / αντικείμενο", widget: "string", required: false }
               - { name: "location", label: "Τοποθεσία", widget: "string", required: false }
               - { name: "gear", label: "Εξοπλισμός", widget: "string", required: false }
+              - { name: "capture_date", label: "Ημερομηνία λήψης", widget: "string", required: false, hint: "π.χ. 22 Ιουλίου 2026" }
+              - { name: "exposure", label: "Έκθεση", widget: "string", required: false, hint: "π.χ. 30s × 120" }
+              - { name: "iso", label: "ISO", widget: "string", required: false, hint: "π.χ. ISO 800" }
+              - { name: "frames", label: "Frames / λήψεις", widget: "string", required: false, hint: "π.χ. 120 stacked frames" }
               - { name: "processing", label: "Επεξεργασία", widget: "string", required: false }

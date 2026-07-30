@@ -41,7 +41,7 @@ function renderPhotos(photos) {
         <span class="image-hint" data-el="Προβολή πλήρους εικόνας" data-en="View full image">${currentLang === 'el' ? 'Προβολή πλήρους εικόνας' : 'View full image'}</span>
       </button>
       <div class="card-info"><p class="category">${currentLang === 'el' ? category.el : category.en}</p><h3>${escapeHtml(title)}</h3><p>${escapeHtml(description)}</p>
-        <dl class="shot-details">${detail('Στόχος', 'Target', photo.target)}${detail('Τοποθεσία', 'Location', photo.location)}${detail('Εξοπλισμός', 'Gear', photo.gear)}${detail('Επεξεργασία', 'Processing', photo.processing)}</dl>
+        <dl class="shot-details">${detail('Στόχος', 'Target', photo.target)}${detail('Τοποθεσία', 'Location', photo.location)}${detail('Εξοπλισμός', 'Gear', photo.gear)}${detail('Ημερομηνία', 'Date', photo.capture_date)}${detail('Έκθεση', 'Exposure', photo.exposure)}${detail('ISO', 'ISO', photo.iso)}${detail('Frames', 'Frames', photo.frames)}${detail('Επεξεργασία', 'Processing', photo.processing)}</dl>
       </div></article>`;
   }).join('');
 }

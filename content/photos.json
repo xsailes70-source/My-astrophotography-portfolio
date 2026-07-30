@@ -1,7 +1,7 @@
 {
   "photos": [
     {
-      "image": "/images/galaxy.jpg",
+      "image": "/images/galaxy.webp",
       "category": "deepsky",
       "title_el": "Γαλαξίας",
       "title_en": "Galaxy",
@@ -10,10 +10,14 @@
       "target": "Deep Sky Object",
       "location": "Dark Sky Site",
       "gear": "Sky-Watcher 200PDS",
-      "processing": "Siril · GIMP"
+      "processing": "Siril · GIMP",
+      "capture_date": "",
+      "exposure": "",
+      "iso": "",
+      "frames": ""
     },
     {
-      "image": "/images/galaxy_center0.jpg",
+      "image": "/images/galaxy_center0.webp",
       "category": "landscape",
       "title_el": "Γαλαξιακό Κέντρο",
       "title_en": "Milky Way Center",
@@ -22,10 +26,14 @@
       "target": "Milky Way Core",
       "location": "Dark Sky Site",
       "gear": "Xiaomi 11 Lite",
-      "processing": "Sequator · GIMP"
+      "processing": "Sequator · GIMP",
+      "capture_date": "",
+      "exposure": "",
+      "iso": "",
+      "frames": ""
     },
     {
-      "image": "/images/moon1.jpg",
+      "image": "/images/moon1.webp",
       "category": "solar",
       "title_el": "Η Σελήνη",
       "title_en": "The Moon",
@@ -34,7 +42,11 @@
       "target": "Earth's Moon",
       "location": "Observatory / Home",
       "gear": "Xiaomi 11 Lite",
-      "processing": "Single frame"
+      "processing": "Single frame",
+      "capture_date": "",
+      "exposure": "",
+      "iso": "",
+      "frames": ""
     }
   ]
 }
