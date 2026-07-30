@@ -28,6 +28,14 @@ function detail(labelEl, labelEn, value) {
   return `<div><dt data-el="${labelEl}" data-en="${labelEn}">${labelEl}</dt><dd>${escapeHtml(value)}</dd></div>`;
 }
 
+function cdnImage(image, width, height, quality = 82) {
+  return `/.netlify/images?url=${encodeURIComponent(image)}&w=${width}&h=${height}&fit=cover&fm=webp&q=${quality}`;
+}
+
+function lightboxImage(image) {
+  return `/.netlify/images?url=${encodeURIComponent(image)}&w=1800&fm=webp&q=86`;
+}
+
 function renderPhotos(photos) {
   const visiblePhotos = photos.filter((photo) => activeFilter === 'all' || photo.category === activeFilter);
   gallery.innerHTML = visiblePhotos.map((photo) => {
@@ -35,9 +43,11 @@ function renderPhotos(photos) {
     const description = valueFor(photo, 'description');
     const category = categoryNames[photo.category] || categoryNames.deepsky;
     const image = photo.image || '';
+    const smallImage = cdnImage(image, 480, 320);
+    const largeImage = cdnImage(image, 720, 480);
     return `<article class="card" data-category="${escapeHtml(photo.category)}">
       <button class="image-trigger" type="button" data-image="${escapeHtml(image)}" data-title="${escapeHtml(title)}" aria-label="Μεγέθυνση φωτογραφίας ${escapeHtml(title)}">
-        <img src="${escapeHtml(image)}" alt="${escapeHtml(title)}" loading="lazy">
+        <img src="${escapeHtml(largeImage)}" srcset="${escapeHtml(smallImage)} 480w, ${escapeHtml(largeImage)} 720w" sizes="(max-width: 560px) 100vw, (max-width: 800px) 50vw, 360px" alt="${escapeHtml(title)}" loading="lazy">
         <span class="image-hint" data-el="Προβολή πλήρους εικόνας" data-en="View full image">${currentLang === 'el' ? 'Προβολή πλήρους εικόνας' : 'View full image'}</span>
       </button>
       <div class="card-info"><p class="category">${currentLang === 'el' ? category.el : category.en}</p><h3>${escapeHtml(title)}</h3><p>${escapeHtml(description)}</p>
@@ -76,7 +86,7 @@ gallery.addEventListener('click', (event) => {
   const trigger = event.target.closest('.image-trigger');
   if (!trigger) return;
   lastTrigger = trigger;
-  lightboxImg.src = trigger.dataset.image;
+  lightboxImg.src = lightboxImage(trigger.dataset.image);
   lightboxImg.alt = trigger.dataset.title;
   lightboxTitle.textContent = trigger.dataset.title;
   lightbox.hidden = false;
