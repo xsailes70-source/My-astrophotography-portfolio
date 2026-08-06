@@ -50,6 +50,21 @@
       "image": "/images/moon1.jpg",
       "rating_id": "moon-close-up",
       "category": "solar"
+    },
+    {
+      "iso": "2500",
+      "frames": "100",
+      "capture_date": "6/08/2026",
+      "exposure": "10",
+      "title_el": "Γαλαξιακό κέντρο",
+      "gear": "xiomi 11 lite",
+      "title_en": "Galaxy center",
+      "target": "Γαλαξιίας",
+      "processing": "Sequator,GIMP",
+      "location": "Omvriaki, Greece",
+      "image": "/images/galaxy_center2.jpg",
+      "rating_id": "Galaxy_center2.jpg",
+      "category": "deepsky"
     }
   ]
 }
