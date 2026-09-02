@@ -65,6 +65,13 @@
       "image": "/images/galaxy_center2.jpg",
       "rating_id": "Galaxy_center2.jpg",
       "category": "deepsky"
+    },
+    {
+      "image": "/images/fullmoon.jpg",
+      "title_en": "fullmoon",
+      "title_el": "Πανσέληνος",
+      "category": "solar",
+      "rating_id": "fullmoon"
     }
   ]
 }
