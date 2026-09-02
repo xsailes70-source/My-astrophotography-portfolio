@@ -72,6 +72,13 @@
       "title_el": "Πανσέληνος",
       "category": "solar",
       "rating_id": "fullmoon"
+    },
+    {
+      "rating_id": "moon_1_10_26",
+      "category": "solar",
+      "image": "/images/moon4.jpg",
+      "title_el": "Σελήνη",
+      "title_en": "Moon"
     }
   ]
 }
